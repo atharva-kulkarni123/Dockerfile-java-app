@@ -1,0 +1,11 @@
+version: '3.8'    # docker compose version, It is not the Docker Compose software version itself, but the format version of the Compose file.
+                  # Version 3.8 is one of the newer Compose file format versions, compatible with modern Docker releases.
+services:
+  java-app-test-updated:
+    build:
+      context: .  # The build context is the directory Docker uses to find files for the build. Here, . means the current directory where your docker-compose.yml lives.
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    container_name: java-app-container
+    restart: always
