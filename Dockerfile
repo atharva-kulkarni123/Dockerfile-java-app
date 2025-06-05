@@ -1,4 +1,14 @@
+# Use a lightweight Java 18 image
 FROM openjdk:18-jdk-alpine
-MAINTAINER baeldung.com
-ADD target/MyFirstJavaProject-0.0.1-SNAPSHOT.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+
+# Set working directory inside the container
+WORKDIR /app
+
+# Copy the JAR file from host's target directory into container
+COPY target/*.jar app.jar
+
+# Expose port 3000 (adjust if your app runs on a different port)
+EXPOSE 3000
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]
